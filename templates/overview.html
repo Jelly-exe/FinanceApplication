@@ -7,74 +7,105 @@
 </head>
 <body>
     <table>
+        <tr><td colspan="8"><hr class="solid"></td></tr>
         <tr>
-            <td>
+            <td colspan="2">
+                <button class="navbar-btn blue"><span>Overview</span></button>
+            </td>
+            <td colspan="2">
+                <button class="navbar-btn blue"><span>Transactions</span></button>
+            </td>
+            <td colspan="2">
+                <button class="navbar-btn blue"><span>Student Finance</span></button>
+            </td>
+            <td colspan="2">
+                <button class="navbar-btn blue"><span>Accommodation</span></button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="navbar-btn blue"><span>Subscriptions</span></button>
+            </td>
+            <td colspan="2">
+                <button class="navbar-btn blue"><span>Settings</span></button>
+            </td>
+        </tr>
+
+        <tr><td colspan="8"><hr class="solid"></td></tr>
+        <tr>
+            <td colspan="2">
                 <div class="card">
                     <h1>Balance</h1>
-                    <p>£2000.00</p>
+                    <p>£{{ balance }}</p>
                 </div>
             </td>
-            <td>
+            <td colspan="2">
                 <div class="card">
-                    <h1>Student Finance - Total</h1>
-                    <p>£9000.00</p>
+                    <h1>Weekly Allowance Amount</h1>
+                    <p>£{{ weekly_amount }}</p>
                 </div>
             </td>
-            <td>
+            <td colspan="2">
                 <div class="card">
-                    <h1>Student Finance - Next Instalment</h1>
-                    <p>£3000.00</p>
+                    <h1>Weekly Allowance Left</h1>
+                    <p>£{{ weekly_left }}</p>
                 </div>
             </td>
-            <td>
+            <td colspan="2">
                 <div class="card">
-                    <h1>Accommodation - Next Instalment</h1>
-                    <p>£2000.00</p>
+                    <h1>Connected Account</h1>
+                    <img src="{{ url_for('static', filename='starling-bank-logo.png') }}" alt="Starling Bank Logo" style="margin: 5px; width: 11em; ">
                 </div>
             </td>
         </tr>
         <tr>
-            <td>
+            <td colspan="3">
                 <div class="card">
-                    <h1>Something</h1>
-                    <p>Some Value</p>
+                    <button class="btn blue"><span>More Info</span></button>
+                    <h1 >Student Finance</h1>
+                    <p><strong>Total</strong><br>£{{ sfe_total }}</p>
+                    <p><strong>1st Instalment</strong><br>£{{ sfe_1st }}</p>
+                    <p><strong>2nd Instalment</strong><br>£{{ sfe_2nd }}</p>
+                    <p><strong>3rd Instalment</strong><br>£{{ sfe_3rd }}</p>
                 </div>
             </td>
-            <td colspan="3" rowspan="90">
+            <td colspan="5" rowspan="90">
                 <div class="card">
+                    <button class="btn blue"><span>View All Transactions</span></button>
                     <h1>Recent Transactions</h1>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
-                    <p>Transaction - £10.00</p>
+                    <br>
+                    <div class="transactions">
+
+                        <p><strong>Party</strong></p>
+                        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;Reference</strong></p>
+                        <p><strong>Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></p>
+
+                    </div>
+                    {% for transaction in transactions %}
+                        <div class="transactions">
+                            <p>{{ transaction["counterPartyName"].title() }}</p>
+                            <p>{{ transaction["reference"].title() }}</p>
+                            <p>{{"+" if transaction["direction"] == "IN" else "-"}} {{transaction["amount"]["minorUnits"] / 100 }} {{ transaction["amount"]["currency"] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </div>
+                        <hr class="solid">
+                    {% endfor %}
                 </div>
             </td>
         </tr>
         <tr>
-            <td>
+            <td colspan="3">
                 <div class="card">
-                    <h1>Something</h1>
-                    <p>Some Value</p>
+                    <button class="btn blue"><span>More Info</span></button>
+                    <h1 >Accommodation</h1>
+                    <p><strong>Total</strong><br>£{{ accommodation_total }}</p>
+                    <p><strong>1st Instalment</strong><br>£{{ accommodation_1st }}</p>
+                    <p><strong>2nd Instalment</strong><br>£{{ accommodation_2nd }}</p>
+                    <p><strong>3rd Instalment</strong><br>£{{ accommodation_3rd }}</p>
                 </div>
             </td>
         </tr>
         <tr>
-            <td>
+            <td colspan="3">
                 <div class="card">
                     <h1>Something</h1>
                     <p>Some Value</p>
