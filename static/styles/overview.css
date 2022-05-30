@@ -1,5 +1,5 @@
 html {
-  font-size: 11px;
+  font-size: 10px;
 }
 
 body {
@@ -31,6 +31,10 @@ td {
 /*  border-collapse: collapse;*/
 /*}*/
 
+.title {
+  font-size: 40px;
+  /*text-align: center;*/
+}
 p {
   font-weight: 200;
 }
@@ -41,7 +45,7 @@ p {
   margin: 1rem;
 }
 .card {
-  font-size: 11px;
+  font-size: 10px;
   width: calc(100% - 6rem); /* 4 + (2 x Margin) = The Value in em */
   box-shadow: 0 40px 80px 0 rgba(0, 0, 0, 0.11), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   text-align: left;
@@ -53,7 +57,7 @@ p {
 
 .card p {
   color: #858e99;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .card .bigger {
