@@ -2,10 +2,11 @@
 <html>
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/overview.css') }}" media="screen">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/background.css') }}" media="screen">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700">
 </head>
 <body>
+<div class="context">
     <table>
     <tr><td colspan="8"><h1 class="title">Finance Calculator</h1></td></tr>
         <tr><td colspan="8"><hr class="solid"></td></tr>
@@ -75,21 +76,21 @@
                     <button class="btn blue"><span>View All Transactions</span></button>
                     <h1>Recent Transactions</h1>
                     <br>
-                    <div class="transactions">
+                    <table class="transactions">
+                        <tr>
+                            <td><p><strong>Party</strong></p></td>
+                            <td><p><strong>Reference</strong></p></td>
+                            <td><p><strong>Amount</strong></p></td>
+                        </tr>
+                        {% for transaction in transactions %}
+                            <tr>
+                                <td><p>{{ transaction["counterPartyName"].title() }}</p></td>
+                                <td><p>{{ transaction["reference"].title() if "reference" in transaction else "No Reference" }}</p></td>
+                                <td><p>{{"+" if transaction["direction"] == "IN" else "-"}} {{transaction["amount"]["minorUnits"] / 100 }} {{ transaction["amount"]["currency"] }}</p></td>
+                            </tr>
+                        {% endfor %}
 
-                        <p><strong>Party</strong></p>
-                        <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;Reference</strong></p>
-                        <p><strong>Amount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></p>
-
-                    </div>
-                    {% for transaction in transactions %}
-                        <div class="transactions">
-                            <p>{{ transaction["counterPartyName"].title() }}</p>
-                            <p>{{ transaction["reference"].title() }}</p>
-                            <p>{{"+" if transaction["direction"] == "IN" else "-"}} {{transaction["amount"]["minorUnits"] / 100 }} {{ transaction["amount"]["currency"] }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                        </div>
-                        <hr class="solid">
-                    {% endfor %}
+                    </table>
                 </div>
             </td>
         </tr>
@@ -107,8 +108,33 @@
         </tr>
         <tr><td colspan="3"><div class="empty-card"></div></td></tr>
     </table>
-</div>
+    </div>
 
+
+<div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
 
 </body>
 </html>

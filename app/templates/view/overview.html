@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="tile is-ancestor">
+    <div class="tile is-parent">
+        <article class="tile is-child box is-white is-rounded">
+            <p class="title">Balance</p>
+            <p class="content">£{{ balance }}</p>
+        </article>
+    </div>
+    <div class="tile is-parent">
+        <article class="tile is-child box is-white">
+            <p class="title">Weekly Allowance</p>
+            <p class="content">£{{ weekly_amount }}</p>
+        </article>
+    </div>
+    <div class="tile is-parent">
+        <article class="tile is-child box is-white">
+            <p class="title">Weekly Allowance Left</p>
+            <p class="content">£{{ weekly_left }}</p>
+        </article>
+    </div>
+    <div class="tile is-parent">
+        <article class="tile is-child box is-white">
+            <p class="title">Connected Account</p>
+            <figure class="image">
+                <img class="content" src="{{ url_for('static', filename='assets/starling-bank-logo.png') }}" alt="Starling Bank Logo" style="width: 6em; ">
+            </figure>
+        </article>
+    </div>
+</div>
+<div class="tile is-ancestor">
+    <div class="tile is-parent is-4 is-vertical">
+        <article class="tile is-child box is-white">
+            <button class="button is-rounded is-right" style="float: right;">More Info</button>
+            <p class="title">Student Finance</p>
+            <p class="title is-6">Total</p>
+            <p class="subtitle is-6">£{{ sfe_total }}</p>
+            <p class="title is-6">1st Instalment</p>
+            <p class="subtitle is-6">£{{ sfe_1st }}</p>
+            <p class="title is-6">2nd Instalment</p>
+            <p class="subtitle is-6">£{{ sfe_2nd }}</p>
+            <p class="title is-6">3rd Instalment</p>
+            <p class="subtitle is-6">£{{ sfe_3rd }}</p>
+        </article>
+        <article class="tile is-child box is-white">
+            <p class="title">Accomodation</p>
+            <p class="title is-6">Total</p>
+            <p class="subtitle is-6">£{{ accommodation_total }}</p>
+            <p class="title is-6">1st Instalment</p>
+            <p class="subtitle is-6">£{{ accommodation_1st }}</p>
+            <p class="title is-6">2nd Instalment</p>
+            <p class="subtitle is-6">£{{ accommodation_2nd }}</p>
+            <p class="title is-6">3rd Instalment</p>
+            <p class="subtitle is-6">£{{ accommodation_3rd }}</p>
+        </article>
+    </div>
+    <div class="tile is-parent is-8">
+        <article class="tile is-child box is-white">
+            <p class="title">Recent Transactions</p>
+            <table class="table is-hoverable is-fullwidth">
+              <thead>
+                  <tr>
+                      <th>Date</th>
+                      <th>Company</th>
+                      <th>Reference</th>
+                      <th>Amount</th>
+                  </tr>
+              </thead>
+              <tfoot>
+                  <tr>
+                      <th>Date</th>
+                      <th>Company</th>
+                      <th>Reference</th>
+                      <th>Amount</th>
+                  </tr>
+              </tfoot>
+              <tbody>
+              {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction["transactionTime"][:10].title() }}</td>
+                    <td>{{ transaction["counterPartyName"].title() }}</td>
+                    <td>{{ transaction["reference"].title() if "reference" in transaction else "No Reference" }}</td>
+                    <td>{{"+" if transaction["direction"] == "IN" else "-"}} {{transaction["amount"]["minorUnits"] / 100 }} {{ transaction["amount"]["currency"] }}</p></td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        </article>
+    </div>
+</div>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+          <p class="title">Vertical...</p>
+          <p class="content">Top tile</p>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">...tiles</p>
+          <p class="content">Bottom tile</p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-info">
+          <p class="title">Middle tile</p>
+          <p class="content">With an image</p>
+          <figure class="image is-4by3">
+            <img src="https://bulma.io/images/placeholders/640x480.png">
+          </figure>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-danger">
+        <p class="title">Wide tile</p>
+        <p class="content">Aligned with the right tile</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <p class="title">Tall tile</p>
+        <p class="content">With even more content</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flask Auth Example</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bulma.css') }}" />
+
+</head>
+
+<body>
+    <nav class="navbar level is-fixed-top is-light has-shadow">
+        <div class="navbar-item level-item has-text-centered">
+            <button class="button link is-light">Overview</button>
+        </div>
+        <div class="navbar-item level-item has-text-centered">
+            <button class="button link is-light">Transactions</button>
+        </div>
+        <div class="navbar-item level-item has-text-centered">
+            <button class="button link is-light">Student Finance</button>
+        </div>
+        <div class="level-item has-text-centered">
+            <img src="{{ url_for('static', filename='assets/application-logo-black-small.png') }}" alt="" style="height: 30px;">
+        </div>
+        <div class="navbar-item level-item has-text-centered">
+            <button class="button link is-light">Accomodation</button>
+        </div>
+        <div class="navbar-item level-item has-text-centered">
+            <button class="button link is-light">Subscriptions</button>
+        </div>
+        <div class="navbar-item level-item has-text-centered">
+            <button class="button link is-light">Settings</button>
+        </div>
+    </nav>
+    <section class="hero is-light is-fullheight-with-navbar">
+        <div class="hero-head">
+        </div>
+
+        <div class="hero-body">
+            <div class="container">
+               {% block content %}
+               {% endblock %}
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

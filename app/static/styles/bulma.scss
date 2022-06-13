@@ -1,0 +1,23 @@
+@charset "utf-8";
+@import url('clash-display.css');
+
+$title-size: 1.5rem;
+$subtitle-size: 1.25rem;
+$navbar-height: 6rem;
+$navbar-padding-vertical: 3rem;
+$box-radius: 15px;
+$navbar-box-shadow-color: rgba(0, 0, 0, 0.2);
+$navbar-box-shadow-size: 4px 0px 10px;
+$hero-body-padding-tablet: 1rem 3rem;
+
+$family-sans-serif: ClashDisplay-Variable;
+
+$button-color: rgba(90, 74, 227, 0.8);
+$button-background-color: rgba(189, 182, 250, 0.2);
+$button-border-color: rgba(90, 74, 227, 0.8);
+
+$main: #5a4ae3;
+$primary: $main;
+
+@import "../bulma/sass/utilities/mixins";
+@import "../bulma/bulma.sass";
