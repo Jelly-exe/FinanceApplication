@@ -7,37 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask Auth Example</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/bulma.css') }}" />
-
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/modal.js') }}" defer></script>
+    <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js"></script>
 </head>
 
 <body>
     <nav class="navbar level is-fixed-top is-light has-shadow">
         <div class="navbar-item level-item has-text-centered">
-            <button class="button link is-light">Overview</button>
+            <a href={{ url_for('view.overview.overview') }}>
+                <button class="button link is-light">Overview</button>
+            </a>
         </div>
         <div class="navbar-item level-item has-text-centered">
-            <button class="button link is-light">Transactions</button>
+            <a href={{ url_for('view.overview.overview') }}>
+                <button class="button link is-light">Transactions</button>
+            </a>
         </div>
         <div class="navbar-item level-item has-text-centered">
-            <button class="button link is-light">Student Finance</button>
+            <a href={{ url_for('view.overview.overview') }}>
+                <button class="button link is-light">Student Finance</button>
+            </a>
         </div>
         <div class="level-item has-text-centered">
             <img src="{{ url_for('static', filename='assets/application-logo-black-small.png') }}" alt="" style="height: 30px;">
         </div>
         <div class="navbar-item level-item has-text-centered">
-            <button class="button link is-light">Accomodation</button>
+            <a href={{ url_for('view.overview.overview') }}>
+                <button class="button link is-light">Accomodation</button>
+            </a>
         </div>
         <div class="navbar-item level-item has-text-centered">
-            <button class="button link is-light">Subscriptions</button>
+            <a href={{ url_for('view.overview.overview') }}>
+                <button class="button link is-light">Subscriptions</button>
+            </a>
         </div>
         <div class="navbar-item level-item has-text-centered">
-            <button class="button link is-light">Settings</button>
+            <a href={{ url_for('view.settings.settings') }}>
+                <button class="button link is-light">Settings</button>
+            </a>
         </div>
     </nav>
     <section class="hero is-light is-fullheight-with-navbar">
         <div class="hero-head">
         </div>
-
         <div class="hero-body">
             <div class="container">
                {% block content %}

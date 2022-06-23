@@ -1,0 +1,161 @@
+{% extends "base.html" %} {% block content %}
+<div class="tile is-ancestor">
+  <div class="tile is-parent">
+    <article class="tile is-child box is-white is-rounded">
+      <button
+        class="button is-rounded is-right js-modal-trigger"
+        style="float: right"
+        data-target="test-modal"
+      >
+        Edit
+      </button>
+      <p class="title">Student Finance</p>
+      <p class="subtitle">Current Values</p>
+      <p class="content">
+        <strong>Total:</strong> {{ sfe_1st["amount"] + sfe_2nd["amount"] +
+        sfe_3rd["amount"] }}
+      </p>
+      <p class="title is-5"><strong>Instalment 1</strong></p>
+      <div class="content">
+        <ul>
+          <li><strong>Amount:</strong> £{{ sfe_1st["amount"] }}</li>
+          <li><strong>Date:</strong> {{ sfe_1st["date"] }}</li>
+        </ul>
+      </div>
+
+      <p class="title is-5"><strong>Instalment 2</strong></p>
+      <div class="content">
+        <ul>
+          <li><strong>Amount:</strong> £{{ sfe_2nd["amount"] }}</li>
+          <li><strong>Date:</strong> {{ sfe_2nd["date"] }}</li>
+        </ul>
+      </div>
+
+      <p class="title is-5"><strong>Instalment 3</strong></p>
+      <div class="content">
+        <ul>
+          <li><strong>Amount:</strong> £{{ sfe_3rd["amount"] }}</li>
+          <li><strong>Date:</strong> {{ sfe_3rd["date"] }}</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child box is-white">
+      <button
+        class="button is-rounded is-right js-modal-trigger"
+        style="float: right"
+        data-target="test-modal"
+      >
+        Edit
+      </button>
+      <p class="title">Accomodation</p>
+      <p class="subtitle">Current Values</p>
+    </article>
+  </div>
+</div>
+<div id="test-modal" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Edit Student Finance</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+    <label class="label">Instalments</label>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">1st </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control is-expanded has-icons-left">
+              <div class="select">
+                <select>
+                  {% for date in getDates(35, 42) %}
+                  <option>{{ date }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <span class="icon is-left">
+                <i class="fas fa-calendar-day"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input class="input" type="text" placeholder="Amount" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-coins"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+        <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">2nd</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control is-expanded has-icons-left">
+              <div class="select">
+                <select>
+                  {% for date in getDates(1, 10) %}
+                  <option>{{ date }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <span class="icon is-left">
+                <i class="fas fa-calendar-day"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input class="input" type="text" placeholder="Amount" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-coins"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">3rd</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control is-expanded has-icons-left">
+              <div class="select">
+                <select>
+                  {% for date in getDates(10, 20) %}
+                  <option>{{ date }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <span class="icon is-left">
+                <i class="fas fa-calendar-day"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input class="input" type="text" placeholder="Amount" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-coins"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success is-outlined">Save changes</button>
+      <button class="button is-link is-outlined">Cancel</button>
+    </footer>
+  </div>
+</div>
+{% endblock %}

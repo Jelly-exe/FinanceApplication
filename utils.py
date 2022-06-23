@@ -26,3 +26,20 @@ def get_transactions(personal_access_token, withinDays, amount):
     feeditems = requests.get(url + "/feed/account/" + (get_account(personal_access_token)) + "/category/" + (get_default_category(personal_access_token)) + "?changesSince=" + datefrom, headers={"Authorization": "Bearer " + personal_access_token})
 
     return feeditems.json()["feedItems"][:amount]
+
+
+def getDates(start, end):
+    def monthDate(day):
+        suffix = ""
+        if 4 <= day <= 20 or 24 <= day <= 30:
+            suffix = "th"
+        else:
+            suffix = ["st", "nd", "rd"][day % 10 - 1]
+        return f'{day}{suffix}'
+
+    values = []
+    for i in range(start, end):
+        aDate = datetime.date.fromisocalendar(2022, i, 1)
+        values.append(aDate.strftime(f'{monthDate(aDate.day)} %B %Y'))
+
+    return values
